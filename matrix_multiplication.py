@@ -8,6 +8,7 @@ def split_matrix(matrix):
                                                                                                mid_col:]
 
 
+# Matrix Multiplication: Divide and Conquer algorithm
 def matrix_multiply(A, B):
     if A.shape == (2, 2) and B.shape == (2, 2):
         C = np.zeros((2, 2))
@@ -30,6 +31,24 @@ def matrix_multiply(A, B):
     return np.vstack((top, bottom))
 
 
+# Matrix Multiplication: 3-for-loops
+def mul(A, B):
+    n = len(A)
+    m = len(B[0])
+    p = len(B)
+
+    C = [[0 for _ in range(m)] for _ in range(n)]
+
+    for k in range(n):
+        for i in range(m):
+            q = 0
+            for j in range(p):
+                q += A[k][j] * B[j][i]
+            C[k][i] = q
+
+    return C
+
+
 A = np.array([[1, 2, 5, 6],
               [3, 4, 3, 4],
               [5, 2, 1, 2],
@@ -39,6 +58,8 @@ B = np.array([[5, 6, 1, 2],
               [3, 1, 1, 2],
               [4, 2, 21, 1]])
 
-result = matrix_multiply(A, B)
-print("Result of matrix multiplication:\n", result)
-print(A @ B)
+m1 = matrix_multiply(A, B)
+m2 = mul(A, B)
+print("Matrix Multiplication: Divide and Conquer algorithm:\n", m1)
+print("Matrix Multiplication: 3-for-loops algorithm:\n", m1)
+print('Numpy built in multiplication, to check the result: \n', A @ B)
