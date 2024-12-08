@@ -6,12 +6,12 @@ def distance(p, q):
     return (p[0] - q[0]) ** 2 + (p[1] - q[1]) ** 2
 
 
-def convex_hull(points):
-    if len(points) < 3:
-        return points
-    points = sorted(points, key=lambda p: (p[1], p[0]))
-    p0 = points[0]
-    sorted_points = sorted(points[1:], key=lambda p: (orientation(p0, p, (p0[0] + 1, p0[1])), -distance(p0, p)))
+def convex_hull(dots):
+    if len(dots) < 3:
+        return dots
+    dots = sorted(dots, key=lambda p: (p[1], p[0]))
+    p0 = dots[0]
+    sorted_points = sorted(dots[1:], key=lambda p: (orientation(p0, p, (p0[0] + 1, p0[1])), -distance(p0, p)))
     hull = [p0, sorted_points[0]]
     for p in sorted_points[1:]:
         while len(hull) > 1 and orientation(hull[-2], hull[-1], p) <= 0:
