@@ -1,6 +1,6 @@
 def LineInt(p1, q1, p2, q2):
     if (Orientation(p1[0], p1[1], q1[0], q1[1], p2[0], p2[1]) !=
-            Orientation(p1[0], p1[1], q1[0], q1[1], q2[0],q2[1]) and
+            Orientation(p1[0], p1[1], q1[0], q1[1], q2[0], q2[1]) and
             Orientation(p2[0], p2[1], q2[0], q2[1], p1[0], p1[1]) !=
             Orientation(p2[0], p2[1], q2[0], q2[1], q1[0], q1[1])):
         return True
